@@ -3,7 +3,7 @@ package com.plout.mypicture.model.vo;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 
 @Data

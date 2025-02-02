@@ -153,20 +153,21 @@ public class UserController {
         return ResultUtils.success(result);
     }
 
-    /* *
-     * 分页获取用户封装列表(仅管理员)
+    /**
+     * 分页获取用户封装列表（仅管理员）
      *
-     * @author plout
+     * @param userQueryRequest 查询请求参数
      */
-    @GetMapping("/list/page/vo")
+    @PostMapping("/list/page/vo")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
-    public BaseResponse<Page<UserVO>> listUserVOByPage(UserQueryRequest userQueryRequest){
-        ThrowUtils.throwIf(ObjectUtil.isEmpty(userQueryRequest),ErrorCode.PARAMS_ERROR);
+    public BaseResponse<Page<UserVO>> listUserVOByPage(@RequestBody UserQueryRequest userQueryRequest) {
+        ThrowUtils.throwIf(userQueryRequest == null, ErrorCode.PARAMS_ERROR);
         long current = userQueryRequest.getCurrent();
         long pageSize = userQueryRequest.getPageSize();
-        Page<User> page = userService.page(new Page<>(current, pageSize), this.userService.getQueryWrapper(userQueryRequest));
-        Page<UserVO> userVOPage = new Page<>(current,pageSize,page.getTotal());
-        List<UserVO> userVOList = userService.getUserVOList(page.getRecords());
+        Page<User> userPage = userService.page(new Page<>(current, pageSize),
+                userService.getQueryWrapper(userQueryRequest));
+        Page<UserVO> userVOPage = new Page<>(current, pageSize, userPage.getTotal());
+        List<UserVO> userVOList = userService.getUserVOList(userPage.getRecords());
         userVOPage.setRecords(userVOList);
         return ResultUtils.success(userVOPage);
     }
