@@ -1,7 +1,0 @@
-cos:
-  client:
-    host: https://plout-1328903394.cos.ap-guangzhou.myqcloud.com
-    secret-id: AKIDoQtAE4hMvITQAmBOOF1YwDIAqLelgOtU
-    secret-key: a4ZDnMxlXHxcFnETVM1SispZ6QYUDk4B
-    bucket: plout-1328903394
-    region: ap-guangzhou
