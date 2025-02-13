@@ -1,11 +1,9 @@
 package com.plout.mypicture.manager;
 
-import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.plout.mypicture.common.ResultUtils;
 import com.plout.mypicture.config.CosClientConfig;
 import com.plout.mypicture.exception.BusinessException;
 import com.plout.mypicture.exception.ErrorCode;
@@ -14,7 +12,6 @@ import com.plout.mypicture.model.dto.picture.UploadPictureResult;
 import com.qcloud.cos.model.PutObjectResult;
 import com.qcloud.cos.model.ciModel.persistence.ImageInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,8 +22,13 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 文件服务
+ * @deprecated 已废弃，改为使用 upload 包的模板方法优化
+ */
 @Service
 @Slf4j
+@Deprecated
 public class FileManager {
 
     @Resource
@@ -71,6 +73,7 @@ public class FileManager {
             this.deleteTempFile(file);
         }
     }
+
 
     /**
      * 校验图片

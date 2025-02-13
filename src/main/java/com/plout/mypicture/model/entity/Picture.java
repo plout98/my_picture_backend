@@ -95,6 +95,26 @@ public class Picture implements Serializable {
     @TableLogic
     private Integer isDelete;
 
+    /**
+     * 审核状态 0-待审核 1-审核通过 2-审核不通过
+     */
+    private Integer reviewStatus;
+
+    /**
+     * 审核信息
+     */
+    private String reviewMessage;
+
+    /**
+     * 审核人
+     */
+    private Long reviewId;
+
+    /**
+     * 审核时间
+     */
+    private Date reviewTime;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
