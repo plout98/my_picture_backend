@@ -115,6 +115,8 @@ public class Picture implements Serializable {
      */
     private Date reviewTime;
 
+    private String thumbnailUrl;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
