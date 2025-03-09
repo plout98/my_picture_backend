@@ -2,10 +2,7 @@ package com.plout.mypicture.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.plout.mypicture.model.dto.picture.PictureQueryRequest;
-import com.plout.mypicture.model.dto.picture.PictureReviewRequest;
-import com.plout.mypicture.model.dto.picture.PictureUploadByBatchRequest;
-import com.plout.mypicture.model.dto.picture.PictureUploadRequest;
+import com.plout.mypicture.model.dto.picture.*;
 import com.plout.mypicture.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.plout.mypicture.model.entity.User;
@@ -75,4 +72,10 @@ public interface PictureService extends IService<Picture> {
     Integer uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest, User loginUser);
 
     void clearPictureFile(Picture picture);
+
+    void checkPictureAuth(User loginUser, Picture picture);
+
+    void deletePicture(long pictureId, User loginUser);
+
+    void editPicture(PictureEditRequest pictureEditRequest, User loginUser);
 }
